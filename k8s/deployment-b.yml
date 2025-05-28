@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-go-blue
+  labels:
+    app: myapp
+    version: "1.0"
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: myapp
+      color: blue
+  template:
+    metadata:
+      labels:
+        app: myapp
+        color: blue
+        version: "1.0"
+    spec:
+      containers:
+      - name: myapp-container
+        image: kethisxd/do.kt3:1.0.0
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
